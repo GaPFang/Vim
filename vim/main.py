@@ -307,6 +307,7 @@ def main(args):
         drop_block_rate=None,
         img_size=args.input_size
     )
+    print(model)
 
                     
     if args.finetune:
@@ -466,8 +467,8 @@ def main(args):
         test_stats = evaluate(data_loader_val, model, device, amp_autocast)
         print(f"Accuracy of the network on the {len(dataset_val)} test images: {test_stats['acc1']:.1f}%")
 
-        test_stats = evaluate(data_loader_val, model_ema.ema, device, amp_autocast)
-        print(f"Accuracy of the ema network on the {len(dataset_val)} test images: {test_stats['acc1']:.1f}%")
+        # test_stats = evaluate(data_loader_val, model_ema.ema, device, amp_autocast)
+        # print(f"Accuracy of the ema network on the {len(dataset_val)} test images: {test_stats['acc1']:.1f}%")
         return
     
     # log about

@@ -223,6 +223,7 @@ class Mamba(nn.Module):
                     None,  # input-dependent B
                     None,  # input-dependent C
                     self.D.float(),
+                    # self.layer_idx,
                     delta_bias=self.dt_proj.bias.float(),
                     delta_softplus=True,
                 )
@@ -236,6 +237,7 @@ class Mamba(nn.Module):
                     None,
                     None,
                     self.D_b.float(),
+                    # self.layer_idx,
                     delta_bias=self.dt_proj_b.bias.float(),
                     delta_softplus=True,
                 )

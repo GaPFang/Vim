@@ -259,6 +259,8 @@ class VisionMamba(nn.Module):
                  use_double_cls_token=False,
                  use_middle_cls_token=True,
                  **kwargs):
+        # num_classes = 1000
+        # if_ropes = False
         factory_kwargs = {"device": device, "dtype": dtype}
         # add factory_kwargs into kwargs
         kwargs.update(factory_kwargs) 
@@ -306,7 +308,7 @@ class VisionMamba(nn.Module):
                 ft_seq_len=hw_seq_len
             )
         self.head = nn.Linear(self.num_features, num_classes) if num_classes > 0 else nn.Identity()
-
+        print("self.head: ", self.head)
 
         # TODO: release this comment
         dpr = [x.item() for x in torch.linspace(0, drop_path_rate, depth)]  # stochastic depth decay rule
